@@ -1,8 +1,10 @@
-define(['Class', 'Display', 'ImageLoader'], function(Class, Display, ImageLoader) {
+define(['Class', 'Display', 'Assets'], function(Class, Display, Assets) {
 	var _this;
 	var isRunning = false;
 	var title, width, height, g, display;
 
+	var ast = new Assets("Test", "res/textures/spritesheet.png", Assets.DEFAULT_WIDTH, Assets.DEFAULT_HEIGHT);
+	var image = ast.sheet.crop(0, 0, 32, 32);
 	var Game = Class.extend({
 		init: function(_title, _width, _height) {
 			_this = this;
@@ -17,15 +19,13 @@ define(['Class', 'Display', 'ImageLoader'], function(Class, Display, ImageLoader
 		g = display.getGraphics();
 	}
 
-	var img = ImageLoader.loadImage("http://www.clipartlord.com/wp-content/uploads/2013/02/hedgehog.png");
-
 	function tick(_dt) {
 
 	}
 
 	function render() {
 		g.clearRect(0, 0, width, height);
-		g.drawImage(img, 20, 20);
+		g.myDrawImage(image, 10, 15, 32, 32);
 	}
 
 	Game.prototype.start = function() {
