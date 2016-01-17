@@ -17,12 +17,9 @@ define(['Jquery', 'Class'], function($, Class){
 		document.title = title;
 		var body = document.body;
 
-		var canvas = document.createElement("canvas");
-		canvas.style.width = width;
-		canvas.style.height = height;
+		body.innerHTML = "<canvas id='canvas' width='" + width + "' height='" + height + "'></canvas>";
 
-		body.appendChild(canvas);
-
+		var canvas = document.getElementById("canvas");
 		graphics = canvas.getContext("2d");
 	}
 

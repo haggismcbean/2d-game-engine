@@ -1,4 +1,4 @@
-define(['Class', 'Display'], function(Class, Display) {
+define(['Class', 'Display', 'ImageLoader'], function(Class, Display, ImageLoader) {
 	var _this;
 	var isRunning = false;
 	var title, width, height, g, display;
@@ -17,13 +17,15 @@ define(['Class', 'Display'], function(Class, Display) {
 		g = display.getGraphics();
 	}
 
+	var img = ImageLoader.loadImage("http://www.clipartlord.com/wp-content/uploads/2013/02/hedgehog.png");
+
 	function tick(_dt) {
 
 	}
 
 	function render() {
 		g.clearRect(0, 0, width, height);
-		g.fillRect(20, 20, 200, 50);
+		g.drawImage(img, 20, 20);
 	}
 
 	Game.prototype.start = function() {
