@@ -1,7 +1,7 @@
-define(['Class'], function(Class) {
+define(['Class', 'Display'], function(Class, Display) {
 	var Launcher = Class.extend({
-		init: function(_title) {
-			document.title = _title;
+		init: function(_title, _width, _height) {
+			var display = new Display(_title, _width, _height)
 		}
 	});
 
