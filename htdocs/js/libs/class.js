@@ -61,5 +61,6 @@ define(function(){
    
     return Class;
   };
+  return Class;
 });
 
