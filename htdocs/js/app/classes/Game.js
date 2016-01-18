@@ -1,10 +1,9 @@
-define(['Class', 'Display', 'Assets'], function(Class, Display, Assets) {
+define(['Class', 'Display', 'State', 'GameState'], function(Class, Display, State, GameState) {
 	var _this;
 	var isRunning = false;
 	var title, width, height, g, display;
+	var gameState, menuState, settingsState;
 
-	var ast = new Assets("Test", "res/textures/spritesheet.png", Assets.DEFAULT_WIDTH, Assets.DEFAULT_HEIGHT);
-	var image = ast.sheet.crop(0, 0, 32, 32);
 	var Game = Class.extend({
 		init: function(_title, _width, _height) {
 			_this = this;
@@ -17,15 +16,21 @@ define(['Class', 'Display', 'Assets'], function(Class, Display, Assets) {
 	function init() {
 		display = new Display(title, width, height);
 		g = display.getGraphics();
+		gameState = new GameState();
+		State.setState(gameState);
 	}
 
 	function tick(_dt) {
-
+		if (State.getState != null) {
+			State.getState().tick(_dt);
+		}
 	}
 
 	function render() {
 		g.clearRect(0, 0, width, height);
-		g.myDrawImage(image, 10, 15, 32, 32);
+		if (State.getState != null) {
+			State.getState().render(g);
+		}
 	}
 
 	Game.prototype.start = function() {

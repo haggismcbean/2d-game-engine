@@ -20,5 +20,8 @@ define(['Class', 'ImageLoader', 'SpriteSheet'], function(Class, ImageLoader, Spr
 		return assets[_name];
 	}
 
+	var ast = new Assets("hero", "res/textures/spritesheet.png", 32, 32);
+	ast.idle = ast.sheet.crop(0, 0, 32, 32);
+
 	return Assets;
 })
