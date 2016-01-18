@@ -1,8 +1,10 @@
-define(['Class', 'Display', 'State', 'GameState'], function(Class, Display, State, GameState) {
+define(['Class', 'Display', 'State', 'GameState', 'KeyManager', 'Handler'], function(Class, Display, State, GameState, KeyManager, Handler) {
 	var _this;
 	var isRunning = false;
 	var title, width, height, g, display;
 	var gameState, menuState, settingsState;
+	var keyManager;
+	var handler;
 
 	var Game = Class.extend({
 		init: function(_title, _width, _height) {
@@ -10,17 +12,20 @@ define(['Class', 'Display', 'State', 'GameState'], function(Class, Display, Stat
 			title = _title;
 			width = _width;
 			height = _height;
+			keyManager = new KeyManager();
 		}
 	})
 
 	function init() {
 		display = new Display(title, width, height);
 		g = display.getGraphics();
-		gameState = new GameState();
+		handler = new Handler(_this);
+		gameState = new GameState(handler);
 		State.setState(gameState);
 	}
 
 	function tick(_dt) {
+		keyManager.tick();
 		if (State.getState != null) {
 			State.getState().tick(_dt);
 		}
@@ -72,6 +77,10 @@ define(['Class', 'Display', 'State', 'GameState'], function(Class, Display, Stat
 		}
 
 		loop();
+	}
+
+	Game.prototype.getKeyManager = function() {
+		return keyManager;
 	}
 
 	Game.prototype.getWidth = function() {
