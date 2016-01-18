@@ -74,5 +74,12 @@ define(['Class', 'Display', 'State', 'GameState'], function(Class, Display, Stat
 		loop();
 	}
 
+	Game.prototype.getWidth = function() {
+		return width;
+	}
+
+	Game.prototype.getHeight = function() {
+		return height;
+	}
 	return Game;
 })
