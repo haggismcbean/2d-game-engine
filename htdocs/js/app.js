@@ -7,6 +7,7 @@ requirejs.config({
 		// Classes
 		"Assets": "app/classes/gfx/Assets",
 		"Display": "app/classes/display/Display",
+		"Entity": "app/classes/entities/Entity",
 		"Game": "app/classes/Game",
 		"GameState": "app/classes/states/GameState",
 		"Handler": "app/classes/Handler",
