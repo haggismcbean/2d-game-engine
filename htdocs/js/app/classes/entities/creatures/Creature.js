@@ -18,10 +18,10 @@ define(['Entity'], function(Entity) {
 			this.moveY();
 		},
 		moveX: function() {
-			this.x += this.xMove
+			this.x += this.xMove;
 		},
 		moveY: function() {
-			this.y += this.yMove
+			this.y += this.yMove;
 		},
 		
 		// Getters
@@ -40,6 +40,12 @@ define(['Entity'], function(Entity) {
 			this.speed = _speed;
 		}
 	})
-	
+
+	// Static Variables
+	Creature.DEFAULT_SPEED = DEFAULT_SPEED;
+	Creature.DEFAULT_HEALTH = DEFAULT_HEALTH;
+	Creature.DEFAULT_CREATURE_WIDTH = DEFAULT_CREATURE_WIDTH;
+	Creature.DEFAULT_CREATURE_HEIGHT = DEFAULT_CREATURE_HEIGHT;
+
 	return Creature;
 })

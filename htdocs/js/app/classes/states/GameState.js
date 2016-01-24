@@ -1,29 +1,15 @@
-define(['State', 'Assets'], function(State, Assets) {
-	var x = 0;
-	var y = 0;
-	
+define(['State', 'Player'], function(State, Player) {
 	var GameState = State.extend({
 		init: function(_handler) {
 			// calls the parent's constructor
 			this._super(_handler);
+			this.player = new Player(_handler, 20, 20);
 		},
 		tick: function(_dt) {
-			if (this.handler.getKeyManager().up) {
-				y -= 50 * _dt;
-			}
-			if (this.handler.getKeyManager().down) {
-				y += 50 * _dt;
-			}
-			if (this.handler.getKeyManager().left) {
-				x -= 50 * _dt;
-			}
-			if (this.handler.getKeyManager().right) {
-				x += 50 * _dt;
-			}
+			this.player.tick(_dt);
 		},
 		render: function(_g) {
-			var hero = Assets.getAssets("hero");
-			_g.myDrawImage(hero.idle, x, y, hero.width, hero.height);
+			this.player.render(_g);
 		}
 	})
 	return GameState;

@@ -16,11 +16,12 @@ define(['Class', 'ImageLoader', 'SpriteSheet'], function(Class, ImageLoader, Spr
 	
 	Assets.DEFAULT_WIDTH = DEFAULT_WIDTH;
 	Assets.DEFAULT_HEIGHT = DEFAULT_WIDTH;
+
 	Assets.getAssets = function(_name) {
 		return assets[_name];
 	}
 
-	var ast = new Assets("hero", "res/textures/spritesheet.png", 32, 32);
+	var ast = new Assets('player', "res/textures/spritesheet.png", 32, 32);
 	ast.idle = ast.sheet.crop(0, 0, 32, 32);
 
 	return Assets;
