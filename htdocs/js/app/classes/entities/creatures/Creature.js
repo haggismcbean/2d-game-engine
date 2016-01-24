@@ -22,6 +22,24 @@ define(['Entity'], function(Entity) {
 		},
 		moveY: function() {
 			this.y += this.yMove
+		},
+		
+		// Getters
+		getHealth: function() {
+			return this.health;
+		},
+		getSpeed: function() {
+			return this.speed;
+		},
+
+		// Setters
+		setHealth: function(_health) {
+			this.health = _health;
+		},
+		setSpeed: function(_speed) {
+			this.speed = _speed;
 		}
 	})
+	
+	return Creature;
 })
